@@ -1,0 +1,71 @@
+<template>
+  <div>
+    <b-navbar>
+      <template #brand>
+        <b-navbar-item tag="router-link" :to="{ path: '/' }">
+          <img
+            src="https://raw.githubusercontent.com/buefy/buefy/dev/static/img/buefy-logo.png"
+            alt="Lightweight UI components for Vue.js based on Bulma"
+          >
+        </b-navbar-item>
+      </template>
+      <template #start>
+        <b-navbar-item href="#">
+          Loja
+        </b-navbar-item>
+        <b-navbar-dropdown label="Info">
+          <b-navbar-item href="#">
+            Sobre nós
+          </b-navbar-item>
+          <b-navbar-item href="#">
+            Contactos
+          </b-navbar-item>
+        </b-navbar-dropdown>
+      </template>
+
+      <template #end>
+        <b-navbar-item tag="div">
+          <div class="buttons">
+            <nuxt-link v-if="!isLoggedIn" class="button is-primary" to="/auth/register">
+              <strong>Registar</strong>
+            </nuxt-link>
+
+            <nuxt-link v-if="!isLoggedIn" class="button is-light" to="/auth/login">
+              Log in
+            </nuxt-link>
+
+            <button v-if="isLoggedIn" class="button is-light" @click="logout">
+              Logout
+            </button>
+          </div>
+        </b-navbar-item>
+      </template>
+    </b-navbar>
+
+    <Nuxt />
+  </div>
+</template>
+
+<script>
+import { mapGetters } from 'vuex'
+
+export default {
+  name: 'DefaultLayout',
+  computed: {
+    ...mapGetters('user', [
+      'isLoggedIn'
+      // Here you can import other getters from the products.js
+    ])
+  },
+  methods: {
+    async logout () {
+      try {
+        await this.$fire.auth.signOut()
+        this.$router.go()
+      } catch (e) {
+        this.$buefy.toast.open(`Error: ${e}`)
+      }
+    }
+  }
+}
+</script>
