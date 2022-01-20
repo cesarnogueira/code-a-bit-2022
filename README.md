@@ -14,6 +14,7 @@ Assim sendo, este site torna possível gerar uma fonte de rendimento alternativa
 ## Screenshots
 
 ## Deployment da aplicação
+[Yummy](https://yummy.cesarnogueira.com)
 
 ## Arquitetura do projeto
 
