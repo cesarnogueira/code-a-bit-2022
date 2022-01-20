@@ -32,7 +32,7 @@ A aplicação foi construída utilizando [Vue.js](https://vuejs.org), [Nuxt](htt
 
 ![Application diagram](./diagram.png)
 
-Funcionalidades mais interessantes:
+### Funcionalidades mais interessantes:
  - Organização dos produtos por categoria
  - Atualização das informações em tempo real
  - Anúncios de eventos na comunidade
