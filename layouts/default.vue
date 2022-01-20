@@ -65,6 +65,15 @@ export default {
       } catch (e) {
         this.$buefy.toast.open(`Error: ${e}`)
       }
+    },
+    async payment() {
+      let formContainer = document.getElementById("dynamic-forms-container");
+      let formOptions = {
+          chargesUrl: "https://europe-west1-yummy-b5e1a.cloudfunctions.net/notificationHandler",
+          merchantTransactionId: "123456",
+      };
+      let switchJs = new SwitchJs(SwitchJs.environments.TEST, "ACCOUNT_PUBLIC_KEY");
+      switchJs.dynamicForms(formContainer, formOptions);
     }
   }
 }
