@@ -24,7 +24,7 @@ A aplicação foi construída utilizando [Vue.js](https://vuejs.org), [Nuxt](htt
 
 Funcionalidades mais interessantes:
  - Organização dos produtos por categoria
- - TODO
+ - Atualização das informações em tempo real
 
 ## Como configurar o projeto localmente
 
