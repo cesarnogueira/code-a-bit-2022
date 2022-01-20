@@ -2,6 +2,7 @@ import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
 import { getAuth } from 'firebase/auth'
+import { getFunctions } from 'firebase/functions'
 
 export default ({ app, store }, inject) => {
   const config = {
@@ -18,12 +19,14 @@ export default ({ app, store }, inject) => {
   const db = getFirestore(firebaseApp, {})
   const auth = getAuth(firebaseApp)
   const storage = getStorage(firebaseApp)
+  const functions = getFunctions(firebaseApp)
 
   // Inject $hello(msg) in Vue, context and store.
   inject('fire', {
     db,
     auth,
-    storage
+    storage,
+    functions
   })
 
   return new Promise((resolve, reject) => {

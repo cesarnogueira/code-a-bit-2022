@@ -25,23 +25,26 @@ Funcionalidades mais interessantes:
  - TODO
 
 ## Como configurar o projeto localmente
+
+Antes de começar, é necessário criar um projeto no [Firebase](https://firebase.google.com/) e associar as credenciais no ficheiro ```plugins/firebase.js```
+
 ### Que dependências são precisas?
+
+* [NodeJS LTS](https://nodejs.org/en/)
+
 ### Quais os passos necessários para correr o projeto?
 
-
-## Build Setup
-
 ```bash
-# install dependencies
+# instalar dependencias
 $ yarn install
 
-# serve with hot reload at localhost:3000
+# começar servidor com hot reload em localhost:3000
 $ yarn dev
 
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
+# construir para produção
 $ yarn generate
+
+# deploy para o firebase
+$ cd firebase
+$ firebase deploy
 ```

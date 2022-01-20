@@ -29,6 +29,11 @@ export default {
       })
     })
   },
+  head () {
+    return {
+      title: `Yummy | ${this.categoryName}`
+    }
+  },
   computed: {
     categoryName () {
       return this.$route.params.name

@@ -1,5 +1,5 @@
 <template>
-  <section class="hero is-primary is-fullheight">
+  <section class="hero is-fullheight">
     <div class="hero-body">
       <div class="container">
         <div class="columns is-centered">
@@ -15,11 +15,16 @@
 <script>
 export default {
   name: 'LoginLayout',
-  middleware ({ app, redirect, route }) {
-    console.log(app.$fire.auth.currentUser)
-    if (app.$fire.auth.currentUser) {
+  middleware ({ app, redirect, store }) {
+    if (store.getters.user) {
       return redirect('/')
     }
   }
 }
 </script>
+
+<style scoped>
+  .hero {
+    background: url('~@/assets/login_bg.png');
+  }
+</style>

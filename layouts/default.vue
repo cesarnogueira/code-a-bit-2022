@@ -1,23 +1,18 @@
 <template>
-  <div>
-    <b-navbar>
+  <div class="is-flex is-flex-direction-column" style="height: 100%">
+    <b-navbar shadow fixed-top>
       <template #brand>
         <b-navbar-item tag="router-link" :to="{ path: '/' }">
           <img
-            src="https://raw.githubusercontent.com/buefy/buefy/dev/static/img/buefy-logo.png"
+            :src="require('@/assets/logo_full.png')"
             alt="Lightweight UI components for Vue.js based on Bulma"
           >
         </b-navbar-item>
       </template>
       <template #start>
-        <b-navbar-dropdown label="Info">
-          <b-navbar-item tag="nuxt-link" to="/about">
-            Sobre nós
-          </b-navbar-item>
-          <b-navbar-item tag="nuxt-link" to="/contact">
-            Contactos
-          </b-navbar-item>
-        </b-navbar-dropdown>
+        <b-navbar-item tag="nuxt-link" to="/about">
+          Sobre nós
+        </b-navbar-item>
       </template>
 
       <template #end>
@@ -44,6 +39,40 @@
     </b-navbar>
 
     <Nuxt />
+
+    <section class="hero is-dark is-small pt-4" style="margin-top: auto">
+      <div class="hero-body is-flex is-flex-direction-row">
+        <div class="mx-6">
+          <p class="title is-size-5 pb-4">
+            Ligações de interesse
+          </p>
+          <nuxt-link class="subtitle is-size-6 is-block" to="/about">
+            Sobre nós
+          </nuxt-link>
+        </div>
+
+        <div class="mx-6 ">
+          <p class="title is-size-5 pb-4">
+            Segue nos
+          </p>
+          <nuxt-link class="subtitle is-size-6 is-block" to="#">
+            Facebook
+          </nuxt-link>
+          <nuxt-link class="subtitle is-size-6 is-block" to="#">
+            Instagram
+          </nuxt-link>
+        </div>
+
+        <div class="ml-auto mr-6 is-align-self-center">
+          <p class="subtitle is-size-6 is-block" to="#">
+            &copy; 2022, Todos os direitos reservados
+          </p>
+          <p class="subtitle is-size-6 is-block" to="#">
+            feito para o evento 'Code a Bit Hackathon'
+          </p>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -66,16 +95,15 @@ export default {
       } catch (e) {
         this.$buefy.toast.open(`Error: ${e}`)
       }
-    },
-    async payment() {
-      let formContainer = document.getElementById("dynamic-forms-container");
-      let formOptions = {
-          chargesUrl: "https://europe-west1-yummy-b5e1a.cloudfunctions.net/notificationHandler",
-          merchantTransactionId: "123456",
-      };
-      let switchJs = new SwitchJs(SwitchJs.environments.TEST, "ACCOUNT_PUBLIC_KEY");
-      switchJs.dynamicForms(formContainer, formOptions);
     }
   }
 }
 </script>
+
+<style>
+html,body, #__nuxt, #__layout{
+  height:100%!important;
+  width: 100%!important;
+}
+
+</style>

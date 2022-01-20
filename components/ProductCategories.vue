@@ -23,7 +23,9 @@ export default {
         const data = doc.data()
         data.id = doc.id
         return data
-      })
+      }).sort((a, b) => (a.name === 'Outros' || a.name > b.name ? 1 : -1))
+
+      console.log(this.categories.map(doc => doc.name))
     })
   },
   beforeDestroy () {
