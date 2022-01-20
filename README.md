@@ -13,6 +13,14 @@ Assim sendo, este site torna possível gerar uma fonte de rendimento alternativa
 
 ## Screenshots
 
+![Autenticação](/docs/print4.png)
+![Homepage](/docs/print1_homepage.png)
+![Produtos do vendedor](/docs/print.png)
+![Snacks](/docs/print2.png)
+![Sobre nós](/docs/print3.png)
+![Pagamento](/docs/print6.png)
+
+
 ## Deployment da aplicação
 [Yummy](https://yummy.cesarnogueira.com)
 
