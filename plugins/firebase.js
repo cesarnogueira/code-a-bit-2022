@@ -29,7 +29,7 @@ export default ({ app, store }, inject) => {
   return new Promise((resolve, reject) => {
     auth.onAuthStateChanged((user) => {
       if (user) {
-        return resolve(store.commit('user/setUser', user))
+        return resolve(store.dispatch('user/setUser', user))
       }
       return resolve()
     })

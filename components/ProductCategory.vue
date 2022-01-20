@@ -1,5 +1,5 @@
 <template>
-  <div class="card m-4">
+  <nuxt-link class="card m-4" :to="`/categories/${value.name}`">
     <div class="card-content">
       <div class="content">
         <b-image
@@ -14,7 +14,7 @@
         </h6>
       </div>
     </div>
-  </div>
+  </nuxt-link>
 </template>
 
 <script>
