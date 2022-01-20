@@ -22,8 +22,8 @@ Yummy - Sabe melhor!
 ### Diagramas
 
 ## Como configurar o projeto localmente
-### Which dependencies are needed?
-### What steps do I need to do to run the project?
+### Que dependências são precisas?
+### Quais os passos necessários para correr o projeto?
 
 
 ## Build Setup
