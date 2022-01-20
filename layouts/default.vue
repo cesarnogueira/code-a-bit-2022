@@ -10,14 +10,11 @@
         </b-navbar-item>
       </template>
       <template #start>
-        <b-navbar-item href="#">
-          Loja
-        </b-navbar-item>
         <b-navbar-dropdown label="Info">
-          <b-navbar-item href="#">
+          <b-navbar-item tag="nuxt-link" to="/about">
             Sobre nós
           </b-navbar-item>
-          <b-navbar-item href="#">
+          <b-navbar-item tag="nuxt-link" to="/contact">
             Contactos
           </b-navbar-item>
         </b-navbar-dropdown>
@@ -37,6 +34,10 @@
             <button v-if="isLoggedIn" class="button is-light" @click="logout">
               Logout
             </button>
+
+            <nuxt-link v-if="isLoggedIn" class="button is-light" to="/dashboard">
+              Dashboard
+            </nuxt-link>
           </div>
         </b-navbar-item>
       </template>

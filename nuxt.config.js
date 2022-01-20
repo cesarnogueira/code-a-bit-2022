@@ -17,6 +17,9 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      { src: 'https://cdn.switchpayments.com/libs/switch-5.stable.min.js' }
     ]
   },
 
@@ -41,7 +44,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/buefy
-    'nuxt-buefy',
+    'nuxt-buefy'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
