@@ -11,15 +11,15 @@
         class="mt-4"
         label="Adicionar novo produto"
         type="is-primary"
-        @click="showProductModal = true"
+        @click="createModal"
       />
 
       <div class="is-flex is-flex-direction-row is-justify-content-center is-flex-wrap-wrap">
-        <ShopProduct v-for="product in products" :key="product.id" :value="product" />
+        <ShopProduct v-for="product in products" :key="product.id" :value="product" :allow-purchase="false" :allow-delete="true" />
       </div>
 
       <b-modal
-        :active="showProductModal"
+        v-model="showProductModal"
         has-modal-card
         aria-role="dialog"
         aria-label="Example Modal"
@@ -27,17 +27,12 @@
         aria-modal
       >
         <template #default="props">
-          <form action="" class="box">
+          <form action="">
             <div class="modal-card" style="width: auto">
               <header class="modal-card-head">
                 <p class="modal-card-title">
                   Adicionar novo produto
                 </p>
-                <button
-                  type="button"
-                  class="delete"
-                  @click="props.close"
-                />
               </header>
               <section class="modal-card-body">
                 <b-field class="file is-primary" :class="{'has-name': !!newProductFile}">
@@ -92,13 +87,14 @@
               <footer class="modal-card-foot">
                 <b-button
                   label="Fechar"
-                  @click="showProductModal = false"
+                  @click="props.close"
                 />
                 <b-button
                   :disabled="pending"
                   label="Guardar"
                   type="is-primary"
-                  @click="submit"
+                  native-type="submit"
+                  @click.prevent="submit"
                 />
               </footer>
             </div>
@@ -111,7 +107,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { collection, onSnapshot, addDoc } from 'firebase/firestore'
+import { collection, onSnapshot, setDoc, doc } from 'firebase/firestore'
 import { uploadBytes, ref } from 'firebase/storage'
 import DashboardShop from '~/components/dashboard/DashboardShop'
 import ShopProduct from '~/components/ShopProduct'
@@ -169,18 +165,34 @@ export default {
     ])
   },
   methods: {
+    createModal () {
+      this.newProductFile = null
+      this.newProductName = ''
+      this.newProductCategory = ''
+      this.newProductDescription = ''
+      this.newProductPrice = 0
+      this.showProductModal = true
+    },
+    uuidv4 () {
+      return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+      )
+    },
     async submit () {
       try {
         this.pending = true
-        const result = await addDoc(collection(this.$fire.db, 'users', this.getAuthUser.uid, 'shop-products'), {
+        const id = this.uuidv4()
+
+        await uploadBytes(ref(this.$fire.storage, `products/${id}.png`), this.newProductFile)
+
+        await setDoc(doc(this.$fire.db, 'users', this.getAuthUser.uid, 'shop-products', id), {
+          id,
           name: this.newProductName,
           description: this.newProductDescription,
           category: this.newProductCategory,
           price: this.newProductPrice,
           owner: this.getAuthUser.uid
         })
-
-        await uploadBytes(ref(this.$fire.storage, `products/${result.id}.png`), this.newProductFile)
 
         this.showProductModal = false
 

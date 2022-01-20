@@ -1,9 +1,10 @@
 <template>
   <form action="" class="box">
     <b-image
-      :src="require('@/assets/buefy.png')"
+      :src="require('@/assets/logo_full.png')"
       alt="The Buefy Logo"
-      ratio="601by235"
+      ratio="3by1"
+      class="mb-4"
     />
 
     <b-field
@@ -43,7 +44,7 @@
     </b-field>
 
     <b-field>
-      <b-button type="is-primary" expanded @click="submit">
+      <b-button type="is-primary" native-type="submit" expanded @click.prevent="submit">
         Registar
       </b-button>
     </b-field>
@@ -51,6 +52,7 @@
 </template>
 
 <script>
+import { doc, setDoc } from 'firebase/firestore'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 export default {
   name: 'RegisterPage',
@@ -66,11 +68,16 @@ export default {
   methods: {
     async submit () {
       try {
-        await createUserWithEmailAndPassword(this.$fire.auth,
+        const result = await createUserWithEmailAndPassword(this.$fire.auth,
           this.email,
           this.password,
           this.name
         )
+
+        await setDoc(doc(this.$fire.db, 'users', result.user.uid), {
+          name: this.name,
+          email: this.email
+        })
 
         this.$router.push('/')
       } catch (e) {

@@ -1,5 +1,5 @@
 <template>
-  <form action="" class="m-6">
+  <form action="" class="m-6" style="max-width: 500px">
     <h2 class="title">
       Loja
     </h2>
@@ -26,7 +26,7 @@
 
     <b-field>
       <b-button type="is-primary" @click="submit">
-        Submit
+        Guardar
       </b-button>
     </b-field>
   </form>
@@ -44,9 +44,11 @@ export default {
       address: ''
     }
   },
-  fetch () {
-    this.name = this.getUser?.shop?.name || ''
-    this.address = this.getUser?.shop?.address || ''
+  watch: {
+    getUser (newU, oldU) {
+      this.name = newU?.shop?.name || ''
+      this.address = newU?.shop?.address || ''
+    }
   },
   computed: {
     ...mapGetters('user', [
