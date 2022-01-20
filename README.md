@@ -20,6 +20,8 @@ Assim sendo, este site torna possível gerar uma fonte de rendimento alternativa
 
 A aplicação foi construída utilizando [Vue.js](https://vuejs.org), [Nuxt](https://nuxtjs.org) e [Buefy](https://buefy.org) para a interface. Os dados são guardados em e recolhidos de uma base de dados [Firestore](https://firebase.google.com/products/firestore). [Cloud Functions](https://firebase.google.com/products/functions) é utilizado para receber os pedidos de pagamento por parte do cliente, fazer uma chamada à [Switch API](https://switchpayments.com/docs/dynamic-forms) e responder de volta ao cliente.
 
+![Application diagram](./diagram.png)
+
 Funcionalidades mais interessantes:
  - Organização dos produtos por categoria
  - TODO
