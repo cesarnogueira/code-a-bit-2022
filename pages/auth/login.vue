@@ -1,9 +1,10 @@
 <template>
   <form action="" class="box">
     <b-image
-      :src="require('@/assets/buefy.png')"
+      :src="require('@/assets/logo_full.png')"
       alt="The Buefy Logo"
-      ratio="601by235"
+      ratio="3by1"
+      class="mb-4"
     />
 
     <b-field
@@ -25,7 +26,7 @@
     </b-field>
 
     <b-field>
-      <b-button type="is-primary" expanded @click="submit">
+      <b-button type="is-primary" native-type="submit" expanded @click.prevent="submit">
         Login
       </b-button>
     </b-field>
@@ -47,11 +48,12 @@ export default {
   methods: {
     async submit () {
       try {
-        await signInWithEmailAndPassword(this.$fire.auth,
+        const result = await signInWithEmailAndPassword(this.$fire.auth,
           this.email,
           this.password
         )
 
+        console.log(result)
         this.$router.push('/')
       } catch (e) {
         this.$buefy.toast.open(`Error: ${e}`)

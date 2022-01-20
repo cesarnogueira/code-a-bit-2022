@@ -20,28 +20,33 @@ Assim sendo, este site torna possível gerar uma fonte de rendimento alternativa
 
 A aplicação foi construída utilizando [Vue.js](https://vuejs.org), [Nuxt](https://nuxtjs.org) e [Buefy](https://buefy.org) para a interface. Os dados são guardados em e recolhidos de uma base de dados [Firestore](https://firebase.google.com/products/firestore). [Cloud Functions](https://firebase.google.com/products/functions) é utilizado para receber os pedidos de pagamento por parte do cliente, fazer uma chamada à [Switch API](https://switchpayments.com/docs/dynamic-forms) e responder de volta ao cliente.
 
+![Application diagram](./diagram.png)
+
 Funcionalidades mais interessantes:
  - Organização dos produtos por categoria
- - TODO
+ - Atualização das informações em tempo real
 
 ## Como configurar o projeto localmente
+
+Antes de começar, é necessário criar um projeto no [Firebase](https://firebase.google.com/) e associar as credenciais no ficheiro ```plugins/firebase.js```
+
 ### Que dependências são precisas?
+
+* [NodeJS LTS](https://nodejs.org/en/)
+
 ### Quais os passos necessários para correr o projeto?
 
-
-## Build Setup
-
 ```bash
-# install dependencies
+# instalar dependencias
 $ yarn install
 
-# serve with hot reload at localhost:3000
+# começar servidor com hot reload em localhost:3000
 $ yarn dev
 
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
+# construir para produção
 $ yarn generate
+
+# deploy para o firebase
+$ cd firebase
+$ firebase deploy
 ```

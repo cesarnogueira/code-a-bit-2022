@@ -5,9 +5,9 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'code-a-bit',
+    title: 'Yummy',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'pt'
     },
     meta: [
       { charset: 'utf-8' },
@@ -48,6 +48,9 @@ export default {
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
+  build: {},
+
+  server: {
+    host: '0.0.0.0' // default: localhost
   }
 }
