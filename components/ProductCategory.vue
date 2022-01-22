@@ -3,9 +3,8 @@
     <div class="card-content">
       <div class="content">
         <b-image
-          v-if="url"
           class="icon"
-          :src="url"
+          :src="`https://ik.imagekit.io/rfalcao/v0/b/yummy-b5e1a.appspot.com/o/categories%2F${value.id}.png?alt=media`"
           :alt="`${value.name} Logo`"
         />
 
@@ -18,7 +17,6 @@
 </template>
 
 <script>
-import { getDownloadURL, ref } from 'firebase/storage'
 
 export default {
   name: 'ProductCategory',
@@ -31,9 +29,6 @@ export default {
     return {
       url: null
     }
-  },
-  async fetch () {
-    this.url = await getDownloadURL(ref(this.$fire.storage, `categories/${this.value.id}.png`))
   }
 }
 </script>

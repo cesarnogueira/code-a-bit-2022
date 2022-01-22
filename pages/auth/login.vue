@@ -27,7 +27,7 @@
 
     <b-field>
       <b-button type="is-primary" native-type="submit" expanded @click.prevent="submit">
-        Login
+        Entrar
       </b-button>
     </b-field>
   </form>

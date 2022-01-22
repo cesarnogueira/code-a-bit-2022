@@ -23,7 +23,7 @@
             </nuxt-link>
 
             <nuxt-link v-if="!isLoggedIn" class="button is-light" to="/auth/login">
-              Log in
+              Entrar
             </nuxt-link>
 
             <button v-if="isLoggedIn" class="button is-light" @click="logout">
@@ -56,19 +56,22 @@
             Segue nos
           </p>
           <nuxt-link class="subtitle is-size-6 is-block" to="#">
-            Facebook
+            <b-icon
+              icon="facebook"
+              size="is-small"
+            /> Facebook
           </nuxt-link>
           <nuxt-link class="subtitle is-size-6 is-block" to="#">
-            Instagram
+            <b-icon
+              icon="instagram"
+              size="is-small"
+            /> Instagram
           </nuxt-link>
         </div>
 
         <div class="ml-auto mr-6 is-align-self-center">
           <p class="subtitle is-size-6 is-block" to="#">
-            &copy; 2022, Todos os direitos reservados
-          </p>
-          <p class="subtitle is-size-6 is-block" to="#">
-            feito para o evento 'Code a Bit Hackathon'
+            &copy; Code a Bit 2022, Todos os direitos reservados
           </p>
         </div>
       </div>

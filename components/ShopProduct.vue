@@ -21,6 +21,12 @@
           <p class="subtitle is-6">
             {{ value.price }} €
           </p>
+
+          <b-field grouped>
+            <p v-if="rating" class="control">
+              <b-rate :value="rating" show-score disabled />
+            </p>
+          </b-field>
         </div>
       </div>
 
@@ -93,7 +99,8 @@ export default {
 
       url: null,
       owner: null,
-      quantity: 1
+      quantity: 1,
+      rating: (3 + Math.random() * 2).toFixed(1)
     }
   },
   async fetch () {
@@ -102,7 +109,9 @@ export default {
       this.owner = data.data()
     }
 
-    this.url = await getDownloadURL(ref(this.$fire.storage, `products/${this.value.id}.png`))
+    let url = await getDownloadURL(ref(this.$fire.storage, `products/${this.value.id}.png`))
+    url = url.replace('https://firebasestorage.googleapis.com', 'https://ik.imagekit.io/rfalcao')
+    this.url = url + '&w=320'
   },
   computed: {
     isOwned () {
